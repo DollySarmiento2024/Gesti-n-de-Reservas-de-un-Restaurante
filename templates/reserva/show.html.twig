@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Reserva{% endblock %}
+
+{% block body %}
+    <h2>Reserva nº {{ reserva.id }}</h2>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Usuario</th>
+                <td>{{ reserva.user.nombre }}</td>
+            </tr>
+            <tr>
+                <th>Fecha y hora de reserve</th>
+                <td>{{ reserva.fechaHora ? reserva.fechaHora|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Comensales</th>
+                <td>{{ reserva.numComensales }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    {{ include('reserva/_delete_form.html.twig') }}
+{% endblock %}

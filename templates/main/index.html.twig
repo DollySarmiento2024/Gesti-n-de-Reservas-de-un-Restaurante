@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inicio{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+    <p>Ubicado en el corazón de la gastronomía, Restaurante DWES ofrece una experiencia culinaria única, fusionando sabores auténticos y cocina de autor. Nuestro menú está diseñado con ingredientes frescos y de alta calidad, destacando platos tradicionales con un toque moderno.
+       Ven y descubre el sabor de la excelencia en Restaurante DWES. ¡Tu mesa te espera! 🍴✨
+    </p>
+    <h2>Navegación:</h2>
+    <ul>
+        <li><a href="{{ path('app_register') }}">Registro</a></li>
+
+        <!--   Mostramos Desconectar/Logueo si estamos o no logueados -->
+        {% if app.user %}
+            <li><a href="{{ path('app_logout') }}">Desconectar</a></li>
+        {% else %}
+            <li><a href="{{ path('app_login') }}">Logueo</a></li>
+        {% endif %}
+
+        <!--   Mostramos estas rutas si estamos logueados -->
+        {% if app.user %}
+            <!--   Mostramos estas rutas si estamos logueados como USER_ADMIN -->
+            {% if is_granted('ROLE_ADMIN') %}
+                <li><a href="{{ path('app_user_index') }}">Administración de usuarios</a></li>
+                <li><a href="{{ path('app_reserva_index') }}">Administración de reservas</a></li>
+            {% endif %}
+
+            <li><a href="{{ path('app_user_show', { 'id': app.user.id }) }}">Perfil de usuario</a></li>
+
+            <li><a href="{{ path('app_reserva_new') }}">Reservar</a></li>
+        {% endif %}
+
+        <li><a href="{{ path('app_carta') }}">Carta</a></li>
+        <li><a href="{{ path('app_location') }}">Encuentranos</a></li>
+        <li><a href="{{ path('app_about') }}">Quienes somos</a></li>
+
+    </ul>
+</div>
+{% endblock %}

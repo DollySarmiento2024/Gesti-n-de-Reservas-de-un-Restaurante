@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Editar perfil usuario{% endblock %}
+
+{% block body %}
+    <h2>Edicion de perfil de usuario</h2>
+
+    <p>La contraseña debe ser actualizada de nuevo</p>
+
+   {{ include('user/_form.html.twig', {'button_label': 'Actualizar'}) }}
+
+    <a href="{{ path('app_user_show', {'id': user.id}) }}">Volver al perfil</a>
+
+{% endblock %}

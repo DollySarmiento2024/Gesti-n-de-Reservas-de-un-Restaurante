@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Listado de reservas{% endblock %}
+
+{% block body %}
+    <h2>Listado de reservas</h2>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nº reserva</th>
+                <th>Usuario</th>
+                <th>Fecha y hora reserva</th>
+                <th>Comensales</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for reserva in reservas %}
+            <tr>
+                <td>{{ reserva.id }}</td>
+                <td>{{ reserva.user.nombre }}</td>
+                <td>{{ reserva.fechaHora ? reserva.fechaHora|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ reserva.numComensales }}</td>
+                <td>
+                    <a href="{{ path('app_reserva_show', {'id': reserva.id}) }}">Mostrar</a>
+                    <a href="{{ path('app_reserva_edit', {'id': reserva.id}) }}">Editar</a>
+                    <a href="{{ path('app_reserva_delete', {'id': reserva.id}) }}">Borrar reserva {{ reserva.id }}</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">No hay reservas para mostrar</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

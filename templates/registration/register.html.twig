@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Registro - Restaurante DWES{% endblock %}
+
+{% block body %}
+    <div class="fondo centrado">
+    {% for flash_error in app.flashes('verify_email_error') %}
+        <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
+    {% endfor %}
+
+    <h1 class="centrado">Registro de usuario</h1>
+
+    {{ form_errors(registrationForm) }}
+
+    {{ form_start(registrationForm) }}
+        {{ form_row(registrationForm.nombre) }}
+        {{ form_row(registrationForm.apellidos) }}
+        {{ form_row(registrationForm.email) }}
+        {{ form_row(registrationForm.telefono) }}
+        {{ form_row(registrationForm.plainPassword, {
+            label: 'contraseña'
+        }) }}
+        {{ form_row(registrationForm.agreeTerms) }}
+
+        <button type="submit" class="btn">Registro</button>
+    {{ form_end(registrationForm) }}
+    </div>
+{% endblock %}

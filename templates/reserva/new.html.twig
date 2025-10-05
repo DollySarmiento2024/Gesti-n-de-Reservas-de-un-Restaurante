@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nueva Reserva{% endblock %}
+
+{% block body %}
+    <h2>Crear nueva reserva para el usuario {{ app.user.nombre }}</h2>
+
+    {{ include('reserva/_form.html.twig') }}
+
+    <a href="{{ path('app_main') }}">Volver al inicio</a>
+{% endblock %}
