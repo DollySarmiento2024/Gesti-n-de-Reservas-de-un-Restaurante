@@ -59,3 +59,11 @@ El objetivo es demostrar el dominio de la **seguridad en Symfony** mediante el d
 | `/location` | Localización y horario | Público |
 | `/about` | Historia del restaurante | Público |
 
+👩‍💻 Autor
+
+Fernanda Sarmiento 
+
+📄 Licencia
+
+Este proyecto está disponible bajo la licencia MIT.
+
